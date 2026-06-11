@@ -24,7 +24,17 @@
         </p>
         <div class="hero-actions">
             <a href="{{ url_for('register') }}" class="btn-hero-primary">Start tracking free</a>
-            <a href="{{ url_for('login') }}" class="btn-hero-primary">Sign in</a>
+            <a href="#" id="openModal" class="btn-hero-secondary">See how it works</a>
+        </div>
+    </div>
+    
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="video-container">
+                <iframe id="promoVideo" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
     
@@ -106,5 +116,40 @@
         <a href="{{ url_for('register') }}" class="btn-primary">Create free account</a>
     </div>
 </section>
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('videoModal');
+        const btn = document.getElementById('openModal');
+        const span = document.querySelector('.close-modal');
+        const iframe = document.getElementById('promoVideo');
+        const videoSrc = "https://www.youtube.com/embed/dQw4w9WgXcQ"; // Placeholder
+
+        if (btn && modal && span && iframe) {
+            btn.onclick = (e) => {
+                e.preventDefault();
+                iframe.src = videoSrc;
+                modal.style.display = "flex";
+                document.body.style.overflow = "hidden"; // Prevent scrolling
+            }
+
+            const closeModal = () => {
+                modal.style.display = "none";
+                iframe.src = "";
+                document.body.style.overflow = "auto"; // Re-enable scrolling
+            }
+
+            span.onclick = closeModal;
+
+            window.onclick = (event) => {
+                if (event.target == modal) {
+                    closeModal();
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}
 
 {% endblock %}
