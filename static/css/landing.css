@@ -1,0 +1,233 @@
+/* Landing Page Hero Styles */
+
+.hero {
+    padding: 8rem 2rem 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    gap: 5rem;
+}
+
+.hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+}
+
+.hero-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f0fdfa; /* Very light teal */
+    color: #0d9488; /* Sharp teal */
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border: 1px solid #ccfbf1;
+    border-radius: 999px;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.02em;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    background: #14b8a6; /* Vibrant teal dot */
+    border-radius: 50%;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5rem);
+    line-height: 1.05;
+    color: #111827; /* Very dark gray/black */
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.teal-text {
+    color: #0d9488; /* Matching teal */
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #4b5563; /* Muted gray */
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 640px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.btn-hero-primary {
+    background: #111827;
+    color: #ffffff;
+    padding: 1rem 2.25rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-hero-primary:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* App Preview Frame */
+
+.hero-preview {
+    width: 100%;
+    max-width: 960px;
+    padding: 0 1rem;
+}
+
+.preview-frame {
+    background: #f9fafb; /* Clean light gray */
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.frame-header {
+    height: 44px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 0 1.25rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.traffic-lights {
+    display: flex;
+    gap: 8px;
+}
+
+.traffic-lights span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.traffic-lights span:nth-child(1) { background: #ff5f57; }
+.traffic-lights span:nth-child(2) { background: #febc2e; }
+.traffic-lights span:nth-child(3) { background: #28c840; }
+
+.frame-content {
+    padding: 3rem;
+}
+
+.preview-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: #ffffff;
+    padding: 1.75rem;
+    border-radius: 16px;
+    border: 1px solid #f3f4f6;
+    text-align: left;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+}
+
+.stat-value {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: #111827;
+    font-weight: 700;
+}
+
+.preview-chart {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid #f3f4f6;
+    text-align: left;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.chart-header {
+    margin-bottom: 2rem;
+}
+
+.chart-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #111827;
+}
+
+.chart-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.chart-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 80px;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.bar-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.bar-track {
+    height: 10px;
+    background: #f3f4f6;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: #0d9488; /* Teal */
+    border-radius: 999px;
+}
+
+.bar-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+    text-align: right;
+}
+
+@media (max-width: 900px) {
+    .preview-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .frame-content {
+        padding: 1.5rem;
+    }
+    
+    .hero {
+        padding: 4rem 1.5rem;
+        gap: 3rem;
+    }
+}
