@@ -17,7 +17,7 @@ wires the form submission to the database.
 
 ---
 
-#### [MODIFY] [db.py](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/database/db.py)
+#### [MODIFY] [db.py](/expense-tracker/database/db.py)
 
 Two new helper functions are appended **after** `seed_db()`. Nothing existing
 is touched.
@@ -50,7 +50,7 @@ is touched.
 
 ---
 
-#### [MODIFY] [app.py](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/app.py)
+#### [MODIFY] [app.py](/expense-tracker/app.py)
 
 Three discrete changes, in order:
 
@@ -120,7 +120,7 @@ The route function body becomes a two-branch conditional:
 
 ---
 
-#### [MODIFY] [register.html](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/templates/register.html)
+#### [MODIFY] [register.html](/expense-tracker/templates/register.html)
 
 **One line change only** — line 20:
 

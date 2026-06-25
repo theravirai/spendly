@@ -115,3 +115,28 @@ def create_expense(user_id, amount, category, date, description):
     conn.close()
     return expense_id
 
+
+def get_expense_by_id(expense_id):
+    """Retrieves an expense row matching the given expense_id.
+
+    Returns the sqlite3.Row object or None if not found.
+    """
+    conn = get_db()
+    row = conn.execute(
+        "SELECT * FROM expenses WHERE id = ?", (expense_id,)
+    ).fetchone()
+    conn.close()
+    return row
+
+
+def update_expense(expense_id, amount, category, date, description):
+    """Updates the details of the specified expense."""
+    conn = get_db()
+    with conn:
+        conn.execute(
+            "UPDATE expenses SET amount = ?, category = ?, date = ?, description = ? WHERE id = ?",
+            (amount, category, date, description, expense_id)
+        )
+    conn.close()
+
+
