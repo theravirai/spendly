@@ -6,7 +6,7 @@ import math
 from flask import Flask, abort, flash, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from database.db import create_expense, create_user, get_user_by_email, init_db, seed_db, get_expense_by_id, update_expense
+from database.db import create_expense, create_user, get_user_by_email, init_db, seed_db, get_expense_by_id, update_expense, delete_expense as db_delete_expense
 from database.queries import get_user_by_id, get_summary_stats, get_recent_transactions, get_category_breakdown
 
 app = Flask(__name__)
@@ -321,7 +321,20 @@ def edit_expense(id):
 
 @app.route("/expenses/<int:id>/delete")
 def delete_expense(id):
-    return "Delete expense — coming in Step 9"
+    user_id = session.get("user_id")
+    if not user_id:
+        return redirect(url_for("login"))
+
+    expense = get_expense_by_id(id)
+    if not expense:
+        abort(404)
+
+    if expense["user_id"] != user_id:
+        abort(403)
+
+    db_delete_expense(id)
+    flash("Expense deleted successfully!")
+    return redirect(url_for("profile"))
 
 
 if __name__ == "__main__":
