@@ -641,3 +641,29 @@
     stroke-width: 2.25;
 }
 
+.btn-action-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    color: var(--ink-muted);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.btn-action-delete:hover {
+    color: var(--danger);
+    background: var(--danger-light);
+}
+
+.btn-action-delete svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2.25;
+}
+
+
