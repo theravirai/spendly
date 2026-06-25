@@ -1,5 +1,3 @@
-# CLAUDE.md
-
 ## Project overview
 
 Spendly is a lightweight personal expense tracker built with Flask and SQLite.
