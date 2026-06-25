@@ -15,9 +15,9 @@ Create a premium, modern fintech dashboard style profile page featuring:
 
 ## User Review Required
 
-- **Navbar modification**: Update [base.html](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/templates/base.html) to conditionally display the logged-in user's name.
+- **Navbar modification**: Update [base.html](/expense-tracker/templates/base.html) to conditionally display the logged-in user's name.
 - **Session management**: Modify the `/login` route to store the user's name in `session["user_name"]`.
-- **Lucide icons integration**: Load the Lucide CDN in [base.html](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/templates/base.html) to enable lightweight icons.
+- **Lucide icons integration**: Load the Lucide CDN in [base.html](/expense-tracker/templates/base.html) to enable lightweight icons.
 
 ---
 
@@ -31,7 +31,7 @@ None.
 
 ### 1. Backend Modifications
 
-#### [MODIFY] [app.py](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/app.py)
+#### [MODIFY] [app.py](/expense-tracker/app.py)
 - **`login` route**:
   - Store the user's name in the session when credentials are verified.
   ```python
@@ -50,7 +50,7 @@ None.
 
 ### 2. Frontend Templates
 
-#### [MODIFY] [base.html](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/templates/base.html)
+#### [MODIFY] [base.html](/expense-tracker/templates/base.html)
 - Include the Lucide CDN script tag before the closing `</body>` tag (e.g. `https://unpkg.com/lucide@latest`).
 - Add a script call to initialize Lucide icons: `lucide.createIcons();`.
 - Update the navigation section to show the logged-in username if `session.get('user_name')` exists:
@@ -69,7 +69,7 @@ None.
   </div>
   ```
 
-#### [CREATE] [profile.html](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/templates/profile.html)
+#### [CREATE] [profile.html](/expense-tracker/templates/profile.html)
 - Extend `base.html`.
 - Add page-specific stylesheet `static/css/profile.css` inside `{% block head %}`.
 - Build the profile dashboard layout within `{% block content %}`:
@@ -90,7 +90,7 @@ None.
 
 ### 3. Frontend Styles
 
-#### [CREATE] [profile.css](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/static/css/profile.css)
+#### [CREATE] [profile.css](/expense-tracker/static/css/profile.css)
 - Implement a responsive grid layout using CSS custom variables from `style.css` (e.g., `--paper-card`, `--border`, `--ink`, `--ink-soft`, `--ink-muted`).
 - Define the following rules:
   - **Grid Layout**:

@@ -608,3 +608,36 @@
     stroke-width: 2.25;
     flex-shrink: 0;
 }
+
+/* Actions Column and Buttons */
+.actions-cell {
+    white-space: nowrap;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+.btn-action-edit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    color: var(--ink-muted);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.btn-action-edit:hover {
+    color: var(--accent);
+    background: var(--accent-light);
+}
+
+.btn-action-edit svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2.25;
+}
+

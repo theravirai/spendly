@@ -93,11 +93,11 @@ def get_summary_stats(user_id, start_date=None, end_date=None):
         conn.close()
 
 def get_recent_transactions(user_id, limit=10, start_date=None, end_date=None):
-    """Returns a list of dicts, each with date, description, category, amount."""
+    """Returns a list of dicts, each with id, date, description, category, amount."""
     conn = get_db()
     try:
         query = """
-            SELECT date, description, category, amount
+            SELECT id, date, description, category, amount
             FROM expenses
             WHERE user_id = ?
         """
@@ -115,6 +115,7 @@ def get_recent_transactions(user_id, limit=10, start_date=None, end_date=None):
         
         return [
             {
+                "id": row["id"],
                 "date": row["date"],
                 "description": row["description"] if row["description"] is not None else "",
                 "category": row["category"],
