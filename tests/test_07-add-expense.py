@@ -58,7 +58,7 @@ def test_get_add_expense_authenticated():
     with app.test_client() as client:
         # Log in first
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -76,7 +76,7 @@ def test_add_expense_date_defaults_to_today():
     """Requirement: The date field defaults to today's date in YYYY-MM-DD format on GET."""
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -92,7 +92,7 @@ def test_add_expense_contains_predefined_categories():
     valid_categories = ["Food", "Transport", "Bills", "Health", "Entertainment", "Shopping", "Other"]
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -111,7 +111,7 @@ def test_add_expense_successful_insertion():
     """Requirement: Valid submission inserts record in DB, redirects to profile, and flashes success."""
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -155,7 +155,7 @@ def test_validation_amount_missing():
     """Requirement: Missing amount displays error and preserves other form values."""
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -179,7 +179,7 @@ def test_validation_amount_must_be_positive():
     """Requirement: Zero or negative amount displays error and preserves other form values."""
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -213,7 +213,7 @@ def test_validation_amount_must_be_numeric():
     """Requirement: Non-numeric amount displays error and preserves other form values."""
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -235,7 +235,7 @@ def test_validation_category_invalid():
     """Requirement: Category not in predefined list displays error and preserves other values."""
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -257,7 +257,7 @@ def test_validation_date_format_invalid():
     """Requirement: Date in invalid format displays error and preserves other values."""
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -280,7 +280,7 @@ def test_validation_description_too_long():
     """Requirement: Description exceeding 200 characters displays error and preserves other values."""
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         

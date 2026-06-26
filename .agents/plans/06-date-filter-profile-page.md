@@ -3,12 +3,12 @@
 This plan details the implementation for Step 6: Date Filter for Profile Page.
 
 ## Goal
-Implement interactive date filtering for the dashboard stats, category breakdown, and recent expenses on the Spendly profile page using a dynamic, responsive filter bar.
+Implement interactive date filtering for the dashboard stats, category breakdown, and recent expenses on the Outflow profile page using a dynamic, responsive filter bar.
 
 ## Proposed Changes
 
 ### 1. Database Query Upgrades
-In [database/queries.py](/expense-tracker/database/queries.py), modify the following query helpers to accept optional parameters `start_date` and `end_date`:
+In [database/queries.py](/outflow/database/queries.py), modify the following query helpers to accept optional parameters `start_date` and `end_date`:
 * **`get_summary_stats(user_id, start_date=None, end_date=None)`**
   * Apply parameterised `date >= ?` and `date <= ?` filters on both the total spend/count query and the top category query.
 * **`get_recent_transactions(user_id, limit=10, start_date=None, end_date=None)`**
@@ -17,7 +17,7 @@ In [database/queries.py](/expense-tracker/database/queries.py), modify the follo
   * Apply parameterised date range constraints to both the total spend query and the category sum queries.
 
 ### 2. Flask Route Integration
-In [app.py](/expense-tracker/app.py):
+In [app.py](/outflow/app.py):
 * Modify the `@app.route("/profile")` route.
 * Extract query parameters: `preset`, `start_date`, and `end_date`.
 * Compute dynamic date bounds for presets using Python's `datetime.date` and `datetime.timedelta`:
@@ -29,15 +29,15 @@ In [app.py](/expense-tracker/app.py):
 * Pass the computed dates into query helper calls and inject the resolved `start_date`, `end_date`, and `preset` into the template context.
 
 ### 3. Frontend / UI Upgrades
-* **Template ([templates/profile.html](/expense-tracker/templates/profile.html))**:
+* **Template ([templates/profile.html](/outflow/templates/profile.html))**:
   * Insert a `.filter-card` above `.stats-grid`.
   * Render a form with:
     - Quick-select links/buttons for presets: "Last 7 Days", "Last 30 Days", "This Month", and "All Time", adding the `.active` class to the current active preset.
     - Custom date range input fields (`start_date` and `end_date`).
     - An "Apply" submit button and a "Clear" link which routes back to `/profile` with no parameters.
-* **Styles ([static/css/profile.css](/expense-tracker/static/css/profile.css))**:
+* **Styles ([static/css/profile.css](/outflow/static/css/profile.css))**:
   * Style the `.filter-card` component with card styles matching the rest of the application.
-  * Style form layout, labels, and input fields to be clean, modern, and aligned with Spendly's color palette.
+  * Style form layout, labels, and input fields to be clean, modern, and aligned with Outflow's color palette.
   * Make the form layout responsive, transitioning from a single-row flex alignment on desktop to a stacked block layout on mobile viewports.
 
 ### 4. Verification Plan

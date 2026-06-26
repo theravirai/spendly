@@ -8,7 +8,7 @@ Implement the edit expense flow, allowing logged-in users to modify their existi
 ## Proposed Changes
 
 ### 1. Database Helpers
-In [database/db.py](/expense-tracker/database/db.py):
+In [database/db.py](/outflow/database/db.py):
 * Add `get_expense_by_id(expense_id)` helper function:
   - Connect to the DB using `get_db()`.
   - Execute `SELECT * FROM expenses WHERE id = ?`.
@@ -19,13 +19,13 @@ In [database/db.py](/expense-tracker/database/db.py):
   - Run the query within a database transaction context (`with conn:`).
 
 ### 2. Update Queries
-In [database/queries.py](/expense-tracker/database/queries.py):
+In [database/queries.py](/outflow/database/queries.py):
 * Modify `get_recent_transactions(user_id, limit=10, start_date=None, end_date=None)`:
   - Update the query select statement to include `id`: `SELECT id, date, description, category, amount FROM expenses ...`.
   - Include `"id": row["id"]` in the returned dictionary list elements.
 
 ### 3. Flask Route and Views
-In [app.py](/expense-tracker/app.py):
+In [app.py](/outflow/app.py):
 * Import `get_expense_by_id` and `update_expense` from `database.db`.
 * Update the placeholder `@app.route("/expenses/<int:id>/edit")` route to support `GET` and `POST` methods:
   - If user is not logged in (`session.get("user_id")` is absent), redirect to the login page.
@@ -43,12 +43,12 @@ In [app.py](/expense-tracker/app.py):
   - Flash the success message `"Expense updated successfully!"` and redirect to the `/profile` page.
 
 ### 4. Templates and CSS Styling
-* **Template ([templates/profile.html](/expense-tracker/templates/profile.html))**:
+* **Template ([templates/profile.html](/outflow/templates/profile.html))**:
   - Add an "Actions" header column in the transactions table: `<th>Actions</th>` (placed at the end, after `Amount`).
   - In each row of the transactions table, add an action cell containing an Edit link pointing to `url_for('edit_expense', id=expense.id)`. Include a Lucide pencil icon (e.g. `data-lucide="edit-2"` or `data-lucide="edit-3"`).
-* **Styles ([static/css/profile.css](/expense-tracker/static/css/profile.css))**:
+* **Styles ([static/css/profile.css](/outflow/static/css/profile.css))**:
   - Style the action column and the edit button/icon. Ensure the edit link has hover states (e.g. changing color to `var(--accent)`).
-* **Template ([templates/edit_expense.html](/expense-tracker/templates/edit_expense.html)) [NEW]**:
+* **Template ([templates/edit_expense.html](/outflow/templates/edit_expense.html)) [NEW]**:
   - Create the standalone Jinja2 template extending `base.html`.
   - Reuse the same forms and styling classes as `add_expense.html` from `expense.css`.
   - Build the input form containing pre-populated fields: Amount, Category, Date, and Description.

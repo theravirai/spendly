@@ -30,7 +30,7 @@ def test_get_user_by_id_valid():
     user = get_user_by_id(1)
     assert user is not None
     assert user["name"] == "Demo User"
-    assert user["email"] == "demo@spendly.com"
+    assert user["email"] == "demo@outflow.com"
     assert "member_since" in user
     # Check that initials are correct
     assert user["initials"] == "DU"
@@ -53,7 +53,7 @@ def test_get_summary_stats_no_expenses():
     conn = get_db()
     cur = conn.execute(
         "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)",
-        ("No Expense User", "noexpenses@spendly.com", "hash")
+        ("No Expense User", "noexpenses@outflow.com", "hash")
     )
     user_id = cur.lastrowid
     conn.commit()
@@ -78,7 +78,7 @@ def test_get_recent_transactions_no_expenses():
     conn = get_db()
     cur = conn.execute(
         "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)",
-        ("No Expense User", "noexpenses@spendly.com", "hash")
+        ("No Expense User", "noexpenses@outflow.com", "hash")
     )
     user_id = cur.lastrowid
     conn.commit()
@@ -115,7 +115,7 @@ def test_get_category_breakdown_no_expenses():
     conn = get_db()
     cur = conn.execute(
         "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)",
-        ("No Expense User", "noexpenses@spendly.com", "hash")
+        ("No Expense User", "noexpenses@outflow.com", "hash")
     )
     user_id = cur.lastrowid
     conn.commit()
@@ -141,7 +141,7 @@ def test_profile_route_authenticated(monkeypatch, tmp_path):
     with app.test_client() as client:
         # Perform login first
         login_res = client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         }, follow_redirects=True)
         assert login_res.status_code == 200
@@ -153,7 +153,7 @@ def test_profile_route_authenticated(monkeypatch, tmp_path):
         
         # Verification expectations
         assert "Demo User" in html
-        assert "demo@spendly.com" in html
+        assert "demo@outflow.com" in html
         assert "€" in html
         assert "Bills" in html
         assert "1610.50" in html

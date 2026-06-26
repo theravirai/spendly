@@ -15,7 +15,7 @@ None.
 
 ### Backend
 
-#### [MODIFY] [app.py](/expense-tracker/app.py)
+#### [MODIFY] [app.py](/outflow/app.py)
 - **Imports**: Add `check_password_hash` from `werkzeug.security` and `session` from `flask`.
 - **`login` Route**:
   - Change `@app.route("/login")` to accept `methods=["GET", "POST"]`.
@@ -32,7 +32,7 @@ None.
 
 ### Frontend Templates
 
-#### [MODIFY] [login.html](/expense-tracker/templates/login.html)
+#### [MODIFY] [login.html](/outflow/templates/login.html)
 - Update the `<form>` to ensure `action="{{ url_for('login') }}"`.
 - Add a block to display flashed messages (for successful registration feedback).
   ```html
@@ -45,7 +45,7 @@ None.
   {% endwith %}
   ```
 
-#### [MODIFY] [base.html](/expense-tracker/templates/base.html)
+#### [MODIFY] [base.html](/outflow/templates/base.html)
 - Update the navigation links to reflect authentication state using `session.get('user_id')`.
   ```html
   <div class="nav-links">
@@ -58,7 +58,7 @@ None.
   </div>
   ```
 
-#### [MODIFY] [style.css](/expense-tracker/static/css/style.css)
+#### [MODIFY] [style.css](/outflow/static/css/style.css)
 - Add an `.auth-success` class to style the flash messages properly using CSS variables.
   ```css
   .auth-success {

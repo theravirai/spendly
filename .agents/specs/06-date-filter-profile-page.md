@@ -1,7 +1,7 @@
 # Spec: Date Filter for Profile Page
 
 ## Overview
-Step 6 implements date filtering on the dashboard/profile page of Spendly. Currently, the profile page displays all expenses for the logged-in user since the beginning of time. This feature adds a date filtering control block at the top of the profile page, enabling users to filter all dynamic sections (Summary Stats, Category Breakdown, and Recent Expenses) by standard presets (e.g., Last 7 Days, Last 30 Days, This Month, All Time) or by entering a custom start and end date range.
+Step 6 implements date filtering on the dashboard/profile page of Outflow. Currently, the profile page displays all expenses for the logged-in user since the beginning of time. This feature adds a date filtering control block at the top of the profile page, enabling users to filter all dynamic sections (Summary Stats, Category Breakdown, and Recent Expenses) by standard presets (e.g., Last 7 Days, Last 30 Days, This Month, All Time) or by entering a custom start and end date range.
 
 ## Depends on
 - **Step 5 — Backend Connection** (`database/queries.py` and query helpers exist)
@@ -47,7 +47,7 @@ No database changes. We query the `date` text column in the `expenses` table.
     - `get_category_breakdown(user_id, start_date=None, end_date=None)`
   - Dynamically construct SQL queries using parameterized checks (`AND date >= ?` and `AND date <= ?`) without SQL injection vulnerabilities.
 - `static/css/profile.css`:
-  - Style the filter card, forms, date inputs, buttons, and preset links to match Spendly's high-fidelity minimal theme. Ensure responsive styling (stacked forms on smaller viewports).
+  - Style the filter card, forms, date inputs, buttons, and preset links to match Outflow's high-fidelity minimal theme. Ensure responsive styling (stacked forms on smaller viewports).
 
 ## Files to create
 None.

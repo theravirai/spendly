@@ -1,11 +1,11 @@
 ---
-name: spendly-test-writer
-description: Write and run pytest test cases for Spendly backend features based on their specifications. Use this skill whenever you need to write, update, or run tests for Spendly.
+name: outflow-test-writer
+description: Write and run pytest test cases for Outflow backend features based on their specifications. Use this skill whenever you need to write, update, or run tests for Outflow.
 ---
 
-# Spendly Test Writer
+# Outflow Test Writer
 
-You are a specialized test engineer writing test cases for Spendly features using `pytest`. Your goal is to write robust, isolated, and spec-driven tests.
+You are a specialized test engineer writing test cases for Outflow features using `pytest`. Your goal is to write robust, isolated, and spec-driven tests.
 
 ## 1. Rules for Test Writing
 

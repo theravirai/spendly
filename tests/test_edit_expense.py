@@ -38,7 +38,7 @@ def test_edit_expense_nonexistent():
     with app.test_client() as client:
         # Log in (user_id = 1)
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -52,7 +52,7 @@ def test_edit_expense_unauthorized():
     # Insert User 2
     conn.execute(
         "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)",
-        ("User Two", "two@spendly.com", "dummy_hash")
+        ("User Two", "two@outflow.com", "dummy_hash")
     )
     # Insert Expense for User 2 (user_id = 2)
     cur = conn.execute(
@@ -66,7 +66,7 @@ def test_edit_expense_unauthorized():
     with app.test_client() as client:
         # Log in as Demo User (user_id = 1)
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -88,7 +88,7 @@ def test_edit_expense_get_authenticated():
     with app.test_client() as client:
         # Log in
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -112,7 +112,7 @@ def test_edit_expense_post_valid_data():
     with app.test_client() as client:
         # Log in
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -146,7 +146,7 @@ def test_edit_expense_post_validation_errors():
     with app.test_client() as client:
         # Log in
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         

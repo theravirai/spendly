@@ -1,12 +1,12 @@
 ## Project overview
 
-Spendly is a lightweight personal expense tracker built with Flask and SQLite.
+Outflow is a lightweight personal expense tracker built with Flask and SQLite.
 
 ---
 
 ## Architecture
 ```
-spendly/
+outflow/
 ├── app.py              # All routes — single file, no blueprints
 ├── database/
 │   └── db.py           # SQLite helpers: get_db(), init_db(), seed_db()
@@ -103,3 +103,9 @@ pytest -s
 - **FK enforcement is manual** — SQLite foreign keys are off by default; `get_db()` must run `PRAGMA foreign_keys = ON` on every connection
 - The app runs on **port 5001**, not the Flask default 5000 — don't change this
 - We are using euro as a currency everywhere.
+
+---
+
+## Agent formatting rules
+
+- When linking files, always use clean project-relative markdown paths starting with `/outflow/` (e.g., [profile.html](/outflow/templates/profile.html), [style.css](/outflow/static/css/style.css)) instead of absolute URLs (e.g. `file:///Volumes/...`).

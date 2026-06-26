@@ -38,7 +38,7 @@ def test_add_expense_get_authenticated():
     with app.test_client() as client:
         # Log in
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -63,7 +63,7 @@ def test_add_expense_post_valid_data():
     with app.test_client() as client:
         # Log in
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         
@@ -109,7 +109,7 @@ def test_add_expense_post_validation_errors():
     with app.test_client() as client:
         # Log in
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         })
         

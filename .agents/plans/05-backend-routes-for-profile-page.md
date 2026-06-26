@@ -8,7 +8,7 @@ Replace all hardcoded data in the `/profile` route with live SQLite queries. Thi
 ## Proposed Changes
 
 ### 1. Create Database Query Helpers
-We will create a new file [database/queries.py](/expense-tracker/database/queries.py) containing pure SQLite queries to isolate DB interactions from the Flask app.
+We will create a new file [database/queries.py](/outflow/database/queries.py) containing pure SQLite queries to isolate DB interactions from the Flask app.
 
 * **`get_user_by_id(user_id)`**
   * Fetches `name`, `email`, and `created_at` from the `users` table.
@@ -31,11 +31,11 @@ We will create a new file [database/queries.py](/expense-tracker/database/querie
   * Maps `class` to the lowercase category name (e.g., `food`, `utilities`, `shopping`, `transport`).
 
 ### 2. Modify Flask Routes
-In [app.py](/expense-tracker/app.py):
+In [app.py](/outflow/app.py):
 * Import queries from `database.queries`.
 * Modify `@app.route("/profile")` to fetch data from the database using `session["user_id"]`.
 
-We will divide the changes in [app.py](/expense-tracker/app.py) across 3 parallel subagents:
+We will divide the changes in [app.py](/outflow/app.py) across 3 parallel subagents:
 * **Subagent 1**: Fetches user info & transaction history via `get_user_by_id` and `get_recent_transactions`, passing `user_info` and `recent_expenses` to the template.
 * **Subagent 2**: Fetches summary stats via `get_summary_stats`, passing `summary_stats` to the template.
 * **Subagent 3**: Fetches category breakdown via `get_category_breakdown`, passing `category_breakdown` to the template.

@@ -212,7 +212,7 @@ def test_profile_route_preset_7d():
     with app.test_client() as client:
         # Authenticate first
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         }, follow_redirects=True)
         
@@ -242,7 +242,7 @@ def test_profile_route_preset_30d():
     
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         }, follow_redirects=True)
         
@@ -290,7 +290,7 @@ def test_profile_route_preset_this_month():
     
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         }, follow_redirects=True)
         
@@ -318,7 +318,7 @@ def test_profile_route_preset_all():
     """Test GET /profile with preset=all query parameter."""
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         }, follow_redirects=True)
         
@@ -358,7 +358,7 @@ def test_profile_route_custom_range():
     
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         }, follow_redirects=True)
         
@@ -393,7 +393,7 @@ def test_profile_route_no_matching_transactions():
     
     with app.test_client() as client:
         client.post("/login", data={
-            "email": "demo@spendly.com",
+            "email": "demo@outflow.com",
             "password": "demo123"
         }, follow_redirects=True)
         

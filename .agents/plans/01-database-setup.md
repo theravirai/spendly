@@ -31,7 +31,7 @@ Replace the stub in `database/db.py` with a fully working SQLite implementation 
    - Call `get_db()`.
    - Check if any users exist (`SELECT COUNT(*) FROM users`). If > 0, return early to prevent duplicates.
    - Insert Demo User: 
-     - name: 'Demo User', email: 'demo@spendly.com', password_hash: `generate_password_hash('demo123')`.
+     - name: 'Demo User', email: 'demo@outflow.com', password_hash: `generate_password_hash('demo123')`.
    - Fetch the new user's ID.
    - Insert 8 sample expenses for this user spanning the fixed categories (Food, Transport, Bills, Health, Entertainment, Shopping, Other) using parameterized queries. 
    - Spread the dates across the current month (using `datetime.date.today()` and subtracting days).
@@ -52,6 +52,6 @@ Replace the stub in `database/db.py` with a fully working SQLite implementation 
 - Verify that `expense_tracker.db` is created in the project root.
 - Use a SQLite viewer or the `sqlite3` CLI tool to inspect the database:
   - Check that both `users` and `expenses` tables exist with the correct schemas.
-  - Verify that exactly one user ('demo@spendly.com') exists with a hashed password.
+  - Verify that exactly one user ('demo@outflow.com') exists with a hashed password.
   - Verify that 8 sample expenses are linked to the user's ID.
 - Restart the Flask app and ensure no duplicate data is inserted (seed runs only once).

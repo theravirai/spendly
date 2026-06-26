@@ -8,7 +8,7 @@ Implement the delete expense functionality, allowing logged-in users to delete t
 ## Proposed Changes
 
 ### 1. Database Helpers
-In [database/db.py](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/database/db.py):
+In [database/db.py](/outflow/database/db.py):
 * Add `delete_expense(expense_id)` helper function:
   - Connect to the DB using `get_db()`.
   - Execute `DELETE FROM expenses WHERE id = ?`.
@@ -16,7 +16,7 @@ In [database/db.py](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-track
   - Close connection.
 
 ### 2. Flask Route and Views
-In [app.py](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/app.py):
+In [app.py](/outflow/app.py):
 * Import `delete_expense` from `database.db`.
 * Update the placeholder `@app.route("/expenses/<int:id>/delete")` route:
   - Verify that the user is logged in (i.e. `session.get("user_id")` is present). If not, redirect to `/login`.
@@ -28,12 +28,12 @@ In [app.py](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/app.p
   - Redirect the user to `/profile`.
 
 ### 3. Templates and CSS Styling
-* **Template ([templates/profile.html](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/templates/profile.html))**:
+* **Template ([templates/profile.html](/outflow/templates/profile.html))**:
   - In each row of the transactions table, add a delete link/button next to the edit link in the Actions cell.
   - The delete link should point to `url_for('delete_expense', id=expense.id)`.
   - Include a Lucide icon for deletion (e.g. `data-lucide="trash-2"` or `data-lucide="trash"`).
   - To prevent accidental deletion, add an inline `onclick` handler: `onclick="return confirm('Are you sure you want to delete this expense?');"`.
-* **Styles ([static/css/profile.css](file:///Volumes/BrainStorm/Github/Agentic%20AI/expense-tracker/static/css/profile.css))**:
+* **Styles ([static/css/profile.css](/outflow/static/css/profile.css))**:
   - Style the delete action button (e.g., hover color changed to a red accent like `var(--error)` or similar).
 
 ### 4. Verification Plan

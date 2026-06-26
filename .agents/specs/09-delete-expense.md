@@ -1,7 +1,7 @@
 # Spec: Delete Expense
 
 ## Overview
-Step 9 implements the delete expense functionality. Logged-in users will be able to delete an existing expense from the profile/dashboard page. This ensures that users can completely remove incorrect or obsolete expenses, completing the full CRUD capability (Create, Read, Update, Delete) of the Spendly personal expense tracker.
+Step 9 implements the delete expense functionality. Logged-in users will be able to delete an existing expense from the profile/dashboard page. This ensures that users can completely remove incorrect or obsolete expenses, completing the full CRUD capability (Create, Read, Update, Delete) of the Outflow personal expense tracker.
 
 ## Depends on
 - **Step 3 — Login / Logout** (session management and login state verification)

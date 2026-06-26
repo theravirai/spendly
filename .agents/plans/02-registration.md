@@ -17,7 +17,7 @@ wires the form submission to the database.
 
 ---
 
-#### [MODIFY] [db.py](/expense-tracker/database/db.py)
+#### [MODIFY] [db.py](/outflow/database/db.py)
 
 Two new helper functions are appended **after** `seed_db()`. Nothing existing
 is touched.
@@ -50,7 +50,7 @@ is touched.
 
 ---
 
-#### [MODIFY] [app.py](/expense-tracker/app.py)
+#### [MODIFY] [app.py](/outflow/app.py)
 
 Three discrete changes, in order:
 
@@ -120,7 +120,7 @@ The route function body becomes a two-branch conditional:
 
 ---
 
-#### [MODIFY] [register.html](/expense-tracker/templates/register.html)
+#### [MODIFY] [register.html](/outflow/templates/register.html)
 
 **One line change only** — line 20:
 
@@ -162,7 +162,7 @@ Everything else in the template is already correct:
 | 1 | Visit `http://127.0.0.1:5001/register` | Form renders, no errors |
 | 2 | Submit with all fields blank | Inline error: *"All fields are required."* — stays on register page |
 | 3 | Submit with password `abc123` (7 chars) | Inline error: *"Password must be at least 8 characters."* |
-| 4 | Submit with `demo@spendly.com` (seed user's email) | Inline error: *"An account with that email already exists."* |
+| 4 | Submit with `demo@outflow.com` (seed user's email) | Inline error: *"An account with that email already exists."* |
 | 5 | Submit with a fresh email and valid password | Redirected to `/login` |
 | 6 | Open `expense_tracker.db` with any SQLite viewer | New row in `users`; `password_hash` begins with `scrypt:` or `pbkdf2:`, **not** plaintext |
 | 7 | Visit `/`, `/login`, `/privacy`, `/terms` | All still render correctly |

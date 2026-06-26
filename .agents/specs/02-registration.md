@@ -6,7 +6,7 @@ When a visitor submits the sign-up form, the server validates the input,
 hashes the password with Werkzeug, inserts a new row into the `users` table,
 and redirects the user to the login page with a success flash message.
 This is the first step that writes user data to the database and is a
-prerequisite for every authenticated feature in the Spendly roadmap.
+prerequisite for every authenticated feature in the Outflow roadmap.
 
 ---
 
