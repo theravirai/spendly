@@ -5,6 +5,11 @@
     --color-transport: #8a6d9f;
     --color-utilities: var(--accent-2);
     --color-food: var(--accent);
+    --color-health: var(--danger);
+    --color-healthcare: var(--danger);
+    --color-travel: #2a9d8f;
+    --color-entertainment: #d85a7f;
+    --color-other: #8c8c8c;
 }
 
 .profile-container {
@@ -160,9 +165,15 @@
 }
 
 .bar-food { background-color: var(--color-food); }
+.bar-bills { background-color: var(--color-utilities); }
 .bar-utilities { background-color: var(--color-utilities); }
 .bar-shopping { background-color: var(--color-shopping); }
 .bar-transport { background-color: var(--color-transport); }
+.bar-health { background-color: var(--color-health); }
+.bar-healthcare { background-color: var(--color-healthcare); }
+.bar-travel { background-color: var(--color-travel); }
+.bar-entertainment { background-color: var(--color-entertainment); }
+.bar-other { background-color: var(--color-other); }
 
 .breakdown-percentage {
     font-size: 0.75rem;
@@ -398,6 +409,16 @@
 .badge-health {
     background-color: var(--danger-light);
     color: var(--danger);
+}
+
+.badge-healthcare {
+    background-color: var(--danger-light);
+    color: var(--danger);
+}
+
+.badge-travel {
+    background-color: #e8f5e9;
+    color: #2e7d32;
 }
 
 .badge-entertainment {

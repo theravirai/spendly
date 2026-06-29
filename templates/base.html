@@ -11,6 +11,17 @@
     {% block head %}{% endblock %}
 </head>
 <body>
+    {% if session.get('is_demo') %}
+    <div class="demo-banner">
+        <div class="demo-banner-inner">
+            <span>
+                <i data-lucide="alert-triangle" class="demo-banner-icon"></i>
+                You are exploring Outflow in Demo Mode. Changes made here are temporary and may be reset.
+            </span>
+            <a href="{{ url_for('register') }}" class="demo-banner-cta">Create Your Account</a>
+        </div>
+    </div>
+    {% endif %}
 
     <nav class="navbar">
         <div class="nav-inner">
@@ -20,10 +31,18 @@
             </a>
             <div class="nav-links">
                 {% if session.get('user_id') %}
-                    <a href="{{ url_for('profile') }}" class="nav-user-greeting">
-                        <i data-lucide="user" class="nav-user-icon"></i>
-                        {{ session.get('user_name', 'User') }}
-                    </a>
+                    {% if session.get('is_demo') %}
+                        <div class="nav-demo-badge">
+                            <span class="nav-demo-dot"></span>
+                            Demo Mode
+                        </div>
+                        <a href="{{ url_for('register') }}" class="nav-cta">Create Account</a>
+                    {% else %}
+                        <a href="{{ url_for('profile') }}" class="nav-user-greeting">
+                            <i data-lucide="user" class="nav-user-icon"></i>
+                            {{ session.get('user_name', 'User') }}
+                        </a>
+                    {% endif %}
                     <a href="{{ url_for('logout') }}">Sign out</a>
                 {% else %}
                     <a href="{{ url_for('login') }}">Sign in</a>

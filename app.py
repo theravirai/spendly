@@ -6,7 +6,7 @@ import math
 from flask import Flask, abort, flash, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from database.db import create_expense, create_user, get_user_by_email, init_db, seed_db, get_expense_by_id, update_expense, delete_expense as db_delete_expense
+from database.db import create_expense, create_user, get_user_by_email, init_db, seed_db, get_expense_by_id, update_expense, delete_expense as db_delete_expense, cleanup_old_demo_users, create_demo_user
 from database.queries import get_user_by_id, get_summary_stats, get_recent_transactions, get_category_breakdown
 
 app = Flask(__name__)
@@ -25,6 +25,17 @@ def landing():
     # if session.get("user_id"):
     #     return redirect(url_for("profile"))
     return render_template("landing.html")
+
+
+@app.route("/demo")
+def demo_login():
+    cleanup_old_demo_users()
+    user_id, user_name = create_demo_user()
+    session["user_id"] = user_id
+    session["user_name"] = user_name
+    session["is_demo"] = True
+    flash("Welcome to Outflow in Demo Mode!")
+    return redirect(url_for("profile"))
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -203,7 +214,7 @@ def add_expense():
         except ValueError:
             error = "Amount must be a valid number."
 
-    valid_categories = ["Food", "Transport", "Bills", "Health", "Entertainment", "Shopping", "Other"]
+    valid_categories = ["Food", "Transport", "Bills", "Health", "Healthcare", "Travel", "Entertainment", "Shopping", "Other"]
     if not error:
         if not category:
             error = "Category is required."
@@ -282,7 +293,7 @@ def edit_expense(id):
         except ValueError:
             error = "Amount must be a valid number."
 
-    valid_categories = ["Food", "Transport", "Bills", "Health", "Entertainment", "Shopping", "Other"]
+    valid_categories = ["Food", "Transport", "Bills", "Health", "Healthcare", "Travel", "Entertainment", "Shopping", "Other"]
     if not error:
         if not category:
             error = "Category is required."
